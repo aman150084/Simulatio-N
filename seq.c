@@ -42,9 +42,19 @@ planet * initPlanet(){
 	printf("Specify initial position:");
 	scanf("%f%f%f", &p->pos.x,&p->pos.y,&p->pos.z);
 	printf("\n");
-	printf("Specify initial velocity:");
-	scanf("%f%f%f", &p->vel.x,&p->vel.y,&p->vel.z);
+ 	printf("Do you want the planet to be fixed? Y or N?\n (Just in case you want to simulate a situation similar to rotation of planets around Sun, keeping the Sun fixed.)");
+	scanf("%d", &p->fixed);
 	printf("\n");
+	if(p->fixed==1){
+		p->vel.x=0;
+		p->vel.y=0;
+		p->vel.z=0;
+	}
+	else{
+		printf("Specify initial velocity:");
+		scanf("%f%f%f", &p->vel.x, &p->vel.y, &p->vel.z);
+		printf("\n");
+	}
 	printf("Specify planet mass:");
 	scanf("%f", &p->mass);
 	printf("\n");
